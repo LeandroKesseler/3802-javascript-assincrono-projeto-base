@@ -197,5 +197,20 @@ textarea {
 .container-upload-imagem button::after {
     content: "";
     background-image: url("./img/upload.svg");
-    
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+}
+
+.container-imagem-nome {
+    display: flex;
+    gap: 8px;
+    color: var(--secondary-color);
+    font-size: 15px;
 }
