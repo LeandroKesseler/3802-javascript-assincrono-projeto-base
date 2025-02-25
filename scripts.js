@@ -18,10 +18,10 @@ function lerConteudoDoArquivo(arquivo) {
 
         leitor.readAsDataURL(arquivo)
     })
-}
+};
 
-const imagemPrincipal = document.querySelector(".main-iamgem");
-const nomeDaImagem = document.querySelector(".container-imagem-none");
+const imagemPrincipal = document.querySelector(".main-imagem");
+const nomeDaImagem = document.querySelector(".container-imagem-none p");
 
 inputUpload.addEventListener("change", async (evento) => {      //para quando ocorrer uma mudanca no arquivo, definindo como async
     const arquivo = evento.target.files[0];
@@ -33,8 +33,30 @@ inputUpload.addEventListener("change", async (evento) => {      //para quando oc
             imagemPrincipal.src = ConteudoDoArquivo.url;
             nomeDaImagem.textContent = ConteudoDoArquivo.nome;
         } catch (erro) {
-            console.erro ("Erro na leitura do arquivo.")
+            console.error ("Erro na leitura do arquivo");
         }
     }
 })
 
+const inputTags = document.getElementById("input-tags");
+const listaTags = document.getElementById("lista-tags");
+
+inputTags.addEventListener("keypress", (evento) => {
+    if (evento.key === "Enter") { //a propriedade key, diz qual e a tecla
+    evento.preventDefault();
+    const tagTexto = inputTags.value.trim(); //o trim nao permite espaco antes e apos o texto
+    if (tagTexto !== "") {
+        const tagNova = document.createElement("li");
+        tagNova.innerHTML = `<p>${tagTexto}</p> <img src="./img/close-black.svg" class="remove-tag">`
+        listaTags.appendChild(tagNova);
+        inputTags.value = "";
+    }
+    }
+ })
+
+ listaTags.addEventListener("click", (evento) => {
+    if (evento.target.classList.contains("remove-tag")) {
+        const tagQueQueremosRemover = evento.target.parentElement;
+        listaTags.removeChild(tagQueQueremosRemover);
+    }
+ })
