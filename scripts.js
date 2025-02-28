@@ -42,9 +42,9 @@ const inputTags = document.getElementById("input-tags");
 const listaTags = document.getElementById("lista-tags");
 
 inputTags.addEventListener("keypress", (evento) => {
-    if (evento.key === "Enter") { //a propriedade key, diz qual e a tecla
+    if (evento.key === "Enter") { //a propriedade key, diz qual é a tecla
     evento.preventDefault();
-    const tagTexto = inputTags.value.trim(); //o trim nao permite espaco antes e apos o texto
+    const tagTexto = inputTags.value.trim(); //o trim nao permite espaço antes e após o texto
     if (tagTexto !== "") {
         const tagNova = document.createElement("li");
         tagNova.innerHTML = `<p>${tagTexto}</p> <img src="./img/close-black.svg" class="remove-tag">`
@@ -60,3 +60,14 @@ inputTags.addEventListener("keypress", (evento) => {
         listaTags.removeChild(tagQueQueremosRemover);
     }
  })
+
+ const tagsDisponiveis = ["Front-end", "Programação", "Data Science", "Full-stack", "HTML", "CSS", "Javascript"];
+
+ async function verificaTagsDisponiveis(tagTexto) {
+    return new Promise((resolve) => {
+        setTimeout() => {
+            resolve(tagsDisponiveis.includes.(tagTexto));
+
+        }, 1000)
+    })
+ }
